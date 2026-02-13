@@ -4,8 +4,20 @@ __lua__
 #include config.p8.lua
 #include src\oris_toolbox_mini.p8.lua
 #include src\main.p8.lua
+#include src\core\event_system.p8.lua
+#include src\gameplay\grid_system\grid_system.p8.lua
+#include src\gameplay\grid_system\grid_item.p8.lua
+#include src\gameplay\bar_tiems\coffee_machine.p8.lua
+#include src\gameplay\bar_tiems\cookbook.p8.lua
+#include src\gameplay\bar_tiems\ingredient.p8.lua
+#include src\gameplay\bar_tiems\workstation.p8.lua
+#include src\gameplay\bar_tiems\product_stand.p8.lua
+#include src\enums\ingredients_enum.p8.lua
+#include src\enums\recipies_enum.p8.lua
 #include src\scenes\menu_scene.p8.lua
 #include src\scenes\game_scene.p8.lua
+
+
 
 
 __gfx__
