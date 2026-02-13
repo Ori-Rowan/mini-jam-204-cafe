@@ -7,11 +7,11 @@ __lua__
 #include src\core\event_system.p8.lua
 #include src\gameplay\grid_system\grid_system.p8.lua
 #include src\gameplay\grid_system\grid_item.p8.lua
-#include src\gameplay\bar_tiems\coffee_machine.p8.lua
-#include src\gameplay\bar_tiems\cookbook.p8.lua
-#include src\gameplay\bar_tiems\ingredient.p8.lua
-#include src\gameplay\bar_tiems\workstation.p8.lua
-#include src\gameplay\bar_tiems\product_stand.p8.lua
+#include src\gameplay\bar_items\coffee_machine.p8.lua
+#include src\gameplay\bar_items\cookbook.p8.lua
+#include src\gameplay\bar_items\ingredient.p8.lua
+#include src\gameplay\bar_items\workstation.p8.lua
+#include src\gameplay\bar_items\product_stand.p8.lua
 #include src\enums\ingredients_enum.p8.lua
 #include src\enums\recipies_enum.p8.lua
 #include src\scenes\menu_scene.p8.lua
