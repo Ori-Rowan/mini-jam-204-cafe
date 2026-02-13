@@ -20,7 +20,10 @@ function Workstation:interact()
         log("no ingredients in working station")
         return
     elseif self.coffe_machine.brewing then
-        log("cofee machine already brewing")
+        log("cofee machine brewing")
+        return
+    elseif self.coffe_machine.product then
+        log("cofee machine full")
         return
     end
     EventSystem:emit("start_brewing", {ingredients = self.ingredients})

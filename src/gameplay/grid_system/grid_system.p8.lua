@@ -8,14 +8,17 @@ function GridSystem:new(t)
     setmetatable(tbl, self)
 
     tbl.pointer = tbl.pointer or 1
+    tbl.sleep = tbl.sleep or false
     assert(tbl.items)
 
     return tbl
 end
 
 function GridSystem:update()
-    self:move_pointer()
-    self:interact()
+    if not self.sleep then 
+        self:move_pointer()
+        self:interact()
+    end
     foreach(self.items, function (i)
         if (type(i.update) == "function") i:update()
     end)
@@ -25,7 +28,7 @@ function GridSystem:draw()
     foreach(self.items, function (e)
         e:draw()
     end)
-    self.items[self.pointer]:draw_pointer()
+    if (not self.sleep) self.items[self.pointer]:draw_pointer()
 end
 
 function GridSystem:move_pointer()
@@ -53,4 +56,8 @@ function GridSystem:interact()
     if btnp(5) then
         self.items[self.pointer]:interact()
     end
+end
+
+function GridSystem:switch_sleep(sleep)
+    self.sleep = sleep
 end

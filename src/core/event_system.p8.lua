@@ -28,7 +28,7 @@ function EventSystem:emit(event, props, reactive)
         payload = copy_table(props)
     end
 
-    log("Event emitted: "..tostr(event))
+    log("event emitted: "..event)
     add(self.events, {event=event, props=payload})
 end
 

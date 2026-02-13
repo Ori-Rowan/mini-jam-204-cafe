@@ -12,6 +12,10 @@ __lua__
 #include src\gameplay\bar_items\ingredient.p8.lua
 #include src\gameplay\bar_items\workstation.p8.lua
 #include src\gameplay\bar_items\product_stand.p8.lua
+#include src\gameplay\customer_system\customer_system.p8.lua
+#include src\gameplay\customer_system\seat.p8.lua
+#include src\gameplay\customer_system\customer.p8.lua
+#include src\gameplay\customer_system\trashbin.p8.lua
 #include src\enums\ingredients_enum.p8.lua
 #include src\enums\recipies_enum.p8.lua
 #include src\scenes\menu_scene.p8.lua

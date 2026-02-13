@@ -25,7 +25,7 @@ function ProductStand:interact()
 end
 
 function ProductStand:serve()
-    EventSystem:emit("serve_product", {product = product})
+    EventSystem:emit("serve_product", {product = self.product})
     self.product = nil 
 end
 

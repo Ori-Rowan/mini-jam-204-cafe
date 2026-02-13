@@ -1,6 +1,9 @@
 
 function _init()
     SceneManager:enter_scene(GameScene)
+
+    -- local test = CustomerSystem:new({seat_amount=4})
+    -- test.seats[1]:interact()
 end
 
 function _update()

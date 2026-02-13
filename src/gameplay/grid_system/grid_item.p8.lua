@@ -7,15 +7,18 @@ function GridItem:new(t)
 
     setmetatable(tbl, self)
 
+    
     assert(tbl.pos)
     assert(tbl.draw_pos)
 
+    tbl.color = tbl.color or 7
+    
     return tbl
 end
 
 function GridItem:draw()
     local x,y = self.draw_pos.x,self.draw_pos.y
-    rectfill(x, y, x+8, y+8, 7)
+    rectfill(x, y, x+8, y+8, self.color)
 end
 
 function GridItem:draw_pointer()
