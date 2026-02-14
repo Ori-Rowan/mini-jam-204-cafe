@@ -49,8 +49,8 @@ function CustomerSystem:init_grid_system()
             y = 0
         },
         draw_pos = {
-            x = 20,
-            y = 50
+            x = 15,
+            y = 56
         },
         color = 8,
         customer_system = self
@@ -63,8 +63,8 @@ function CustomerSystem:init_grid_system()
                 y = 0
             },
             draw_pos = {
-                x = 20 + i*20,
-                y = 32
+                x = 15 + i*20,
+                y = 56
             },
             color = 3,
             customer_system = self

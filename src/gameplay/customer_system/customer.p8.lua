@@ -23,7 +23,7 @@ function Customer:draw()
 
     local x, y = self.seat.draw_pos.x, self.seat.draw_pos.y
     if _GLOBALS.light then
-            spr(self.spr,x,y,2,4)
+            spr(self.spr,x,y-24,2,4)
     end
 
     palt(_CONFIG.default_bg_col,true)

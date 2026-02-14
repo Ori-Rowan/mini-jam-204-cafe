@@ -24,6 +24,12 @@ function ProductStand:interact()
     self:serve()
 end
 
+function ProductStand:draw()
+    if self.product and _GLOBALS.light then
+        spr(self.product.spr, self.draw_pos.x, self.draw_pos.y, 2, 2)
+    end
+end
+
 function ProductStand:serve()
     EventSystem:emit("serve_product", {product = self.product})
     self.product = nil 

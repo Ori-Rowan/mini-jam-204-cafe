@@ -6,10 +6,12 @@ Trashbin.__index = Trashbin
 function Trashbin:new(t)
     local tbl = GridItem:new(t)
 
-    tbl.customer = nil
-
-    assert(tbl.customer_system)
     setmetatable(tbl, self)
+    
+    assert(tbl.customer_system)
+    
+    tbl.customer = nil
+    tbl.spr = 38
 
     return tbl
 end
@@ -18,9 +20,11 @@ end
 
 -- end
 
--- function Trashbin:draw()
-    
--- end
+function Trashbin:draw()
+   if _GLOBALS.light then
+        spr(self.spr, self.draw_pos.x, self.draw_pos.y, 2, 1)    
+    end 
+end
 
 function Trashbin:add_customer(customer)
     customer.Trashbin = self

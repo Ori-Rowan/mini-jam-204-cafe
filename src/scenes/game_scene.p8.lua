@@ -60,7 +60,7 @@ function GameScene:enter()
     
     local product_stand = ProductStand:new({
         pos = {x = 3, y =1},
-        draw_pos = {x=96, y=100}
+        draw_pos = {x=82, y=92}
     })
     local coffe_machine = CoffeeMachine:new({
         pos = {x=3, y=0},
@@ -88,7 +88,7 @@ function GameScene:enter()
         }),
         Ingredient:new({
             pos = {x=0, y=1},
-            draw_pos = {x=20, y=90},
+            draw_pos = {x=22, y=92},
             spr = 32,
             ingredient = INGREDIENTS_ENUM.CHOCOLATE
         }),
