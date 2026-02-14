@@ -12,7 +12,10 @@ function CoffeeMachine:new(t)
     tbl.brew_timer = 0
     tbl.product = nil
 
+    tbl.cup_spr = 7
+
     assert(tbl.product_stand)
+
 
     EventSystem:add_listener("start_brewing", function (props)
         tbl:handle_start_brewing(props)        
@@ -43,6 +46,24 @@ function CoffeeMachine:update()
             self.brewing=false
         end
     end
+end
+
+function CoffeeMachine:draw()
+    local x,y = self.draw_pos.x,self.draw_pos.y
+    if _GLOBALS.light then
+        spr(self.spr, x, y, 2, 2)
+
+        if self.product then
+            spr(self.cup_spr,x+5,y+8)
+        end
+    end
+
+    local light_col = 15
+    if self.brewing or self.product == nil then
+        light_col = 14
+    end
+    pset(x+12,y+2,light_col)
+    pset(x+13,y+2,light_col)
 end
 
 function CoffeeMachine:get_recipie()

@@ -30,6 +30,20 @@ function Workstation:interact()
     self.ingredients = {}
 end
 
+function Workstation:draw()
+    if not _GLOBALS.light then
+        return
+    end
+
+    local x,y = self.draw_pos.x, self.draw_pos.y
+    rectfill(x,y+2,x+16,y+14, 6)
+    rect(x,y+2,x+16,y+14, 0)
+    if #self.ingredients>0 then
+        spr(6,x+4,y+4)
+
+    end
+end
+
 function Workstation:handle_add_ingredient(props)
     add(self.ingredients, props.ingredient)
 end

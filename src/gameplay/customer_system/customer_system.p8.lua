@@ -19,16 +19,10 @@ function CustomerSystem:new(t)
         tbl:handle_serve_product(props)
     end)
 
-    local test_customer1 = Customer:new{
-        fav_recipie = RECIPIES_ENUM.ESPRESSO.name
-    }
+    
 
-    local test_customer2 = Customer:new{
-        fav_recipie = RECIPIES_ENUM.CAPPUCCINO.name
-    }
-
-    tbl.seats[1]:add_customer(test_customer1)
-    tbl.seats[2]:add_customer(test_customer2)
+    tbl.seats[1]:add_customer(Zombie:new())
+    tbl.seats[2]:add_customer(Skeleton:new())
 
 
     return tbl
@@ -70,7 +64,7 @@ function CustomerSystem:init_grid_system()
             },
             draw_pos = {
                 x = 20 + i*20,
-                y = 50
+                y = 33
             },
             color = 3,
             customer_system = self

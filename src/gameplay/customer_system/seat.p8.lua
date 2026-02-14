@@ -15,13 +15,17 @@ function Seat:new(t)
     return tbl
 end
 
--- function Seat:update()
+function Seat:update()
+    if self.customer then
+        self.customer:update()
+    end
+end
 
--- end
-
--- function Seat:draw()
-    
--- end
+function Seat:draw()
+    if self.customer then
+        self.customer:draw()
+    end
+end
 
 function Seat:add_customer(customer)
     customer.seat = self
@@ -38,6 +42,6 @@ function Seat:interact()
         log("seat empty")
         return
     end
-    
+
     self.customer:serve(self.customer_system.product)
 end

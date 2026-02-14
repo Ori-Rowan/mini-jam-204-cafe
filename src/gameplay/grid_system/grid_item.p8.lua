@@ -19,13 +19,21 @@ end
 function GridItem:draw()
     if _GLOBALS.light then
         local x,y = self.draw_pos.x,self.draw_pos.y
-        rectfill(x, y, x+8, y+8, self.color)
+
+        if self.spr then
+            spr(self.spr, x, y, 2, 2)
+        else
+            rectfill(x, y, x+8, y+8, self.color)
+        end
+
     end
 end
 
 function GridItem:draw_pointer()
-    local x,y = self.draw_pos.x,self.draw_pos.y
-    rect(x, y, x+8, y+8, 4)
+    local mid = {x = self.draw_pos.x-2, y = self.draw_pos.y+8}
+    line(mid.x, mid.y, mid.x-2, mid.y-2, 11)
+    line(mid.x, mid.y, mid.x-2, mid.y+2, 11)
+
 end
 
 function GridItem:interact()
