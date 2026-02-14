@@ -45,7 +45,10 @@ function GameScene:draw()
         clip(0,0,128,128)
 
         line(0,64,128,64,0)
+    else
+        line(0,64,128,64,2)
     end
+
 
     self.bar_grid:draw()
     self.customer_system:draw()

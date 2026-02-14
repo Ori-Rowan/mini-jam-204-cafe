@@ -370,7 +370,7 @@ function ParticleManager:update(layer)
     if layer then
         particles = self.layers[layer]
     end
-    log("updating layer: "..tostr(layer))
+    -- log("updating layer: "..tostr(layer))
 
     foreach(particles, function (p)
         p:update()

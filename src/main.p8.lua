@@ -7,6 +7,10 @@ function _init()
     palt(_CONFIG.default_bg_col,true)
     SceneManager:enter_scene(GameScene)
 
+    
+    -- ParticleManager:create_particle(SatisfactionParticle,{
+    --     x=1,y=1,type="heart"
+    -- })
     -- local test = CustomerSystem:new({seat_amount=4})
     -- test.seats[1]:interact()
 end
@@ -14,9 +18,11 @@ end
 function _update()
     SceneManager:update()
     EventSystem:update()
+    ParticleManager:update()
 end
 
 function _draw()
     cls()
     SceneManager:draw()
+    ParticleManager:draw()
 end

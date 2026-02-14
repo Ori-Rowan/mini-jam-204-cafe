@@ -1,7 +1,7 @@
 MONSTERS_ENUM = {
     ZOMBIE ={
         name = "Zombie",
-        fav_recipie = RECIPIES_ENUM.ESPRESSO.name,
+        fav_recipie = RECIPIES_ENUM.ESPRESSO,
         spr=8,
         bg_col=13,
         vis_colors={11,9}
@@ -10,23 +10,24 @@ MONSTERS_ENUM = {
         name = "Skeleton",
         fav_recipie = RECIPIES_ENUM.CAPPUCCINO,
         spr=10,
-        bg_col=14
+        bg_col=14,
+        vis_colors={}
     },
     GHOST = {
         name = "Ghost",
-        fav_recipie = RECIPIES_ENUM.LATTE
+        fav_recipie = RECIPIES_ENUM.LATTE,
     },
     WAREWOLF = {
         name = "Warewolf",
-        fav_recipie = RECIPIES_ENUM.HOT_CHOCOLATE
+        fav_recipie = RECIPIES_ENUM.HOT_CHOCOLATE,
     },
     VAMPIRE = {
         name = "Vampire",
-        fav_recipie = RECIPIES_ENUM.BLOODY_GOOD_COFFEE
+        fav_recipie = RECIPIES_ENUM.BLOODY_GOOD_COFFEE,
     },
     DOPPLEGANGER = {
         name = "Doppleganger",
-        fav_recipie = RECIPIES_ENUM.SPECIAL_DRINK
+        fav_recipie = RECIPIES_ENUM.SPECIAL_DRINK,
 
     }
 }
