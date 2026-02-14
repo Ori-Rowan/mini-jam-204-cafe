@@ -6,7 +6,7 @@ RECIPIES_ENUM = {
         },
     },
     CAPPUCCINO = {
-        name = "cappucino",
+        name = "cappuccino",
         ingredients = {
             INGREDIENTS_ENUM.COFFEE_BEANS,
             INGREDIENTS_ENUM.MILK

@@ -15,6 +15,7 @@ end
 function GameScene:update()
     self.bar_grid:update()
     self.customer_system:update()
+    self.light_system:update()
 end
 
 function GameScene:draw()
@@ -26,6 +27,8 @@ function GameScene:enter()
 
     EventSystem:clear()   
 
+    self.light_system = LightSystem:new({timer = 2000})
+    
     local product_stand = ProductStand:new({
         pos = {x = 3, y =1},
         draw_pos = {x=90, y=100}

@@ -1,5 +1,6 @@
 
 function _init()
+    _GLOBALS = {}
     SceneManager:enter_scene(GameScene)
 
     -- local test = CustomerSystem:new({seat_amount=4})

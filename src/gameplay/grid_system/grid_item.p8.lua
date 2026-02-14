@@ -17,8 +17,10 @@ function GridItem:new(t)
 end
 
 function GridItem:draw()
-    local x,y = self.draw_pos.x,self.draw_pos.y
-    rectfill(x, y, x+8, y+8, self.color)
+    if _GLOBALS.light then
+        local x,y = self.draw_pos.x,self.draw_pos.y
+        rectfill(x, y, x+8, y+8, self.color)
+    end
 end
 
 function GridItem:draw_pointer()
