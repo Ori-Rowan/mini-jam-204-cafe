@@ -8,7 +8,9 @@ MONSTERS_ENUM = {
     },
     SKELETON = {
         name = "Skeleton",
-        fav_recipie = RECIPIES_ENUM.CAPPUCCINO
+        fav_recipie = RECIPIES_ENUM.CAPPUCCINO,
+        spr=10,
+        bg_col=14
     },
     GHOST = {
         name = "Ghost",

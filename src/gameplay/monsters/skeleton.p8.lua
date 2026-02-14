@@ -2,11 +2,8 @@ Skeleton = {}
 setmetatable(Skeleton, Customer)
 Skeleton.__index = Skeleton
 
-function Skeleton:new(t)
-    t = t or {}
-    local tbl = copy_table(t)
-
-    tbl.fav_recipie = MONSTERS_ENUM.SKELETON.fav_recipie.name
+function Skeleton:new()
+    local tbl = copy_table(MONSTERS_ENUM.SKELETON)
 
     tbl = Customer:new(tbl)
     
