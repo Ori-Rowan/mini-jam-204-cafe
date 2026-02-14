@@ -41,7 +41,7 @@ function MenuScene:main_update()
     if btnp(3) then
         self.pointer+=1
     end
-    self.pointer = mid(1,self.pointer,MENU_SCENE_STATE.lenght)
+    self.pointer = mid(1,self.pointer,MENU_SCENE_STATE.length)
     if l_pointer != self.pointer then
         sfx(3)
     end

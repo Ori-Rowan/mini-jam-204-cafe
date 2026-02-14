@@ -229,7 +229,7 @@ end
 ---@param v table {number x, number y}
 ---@return table {number x, number y}
 function normalize_vector(v)
-    if (get_vector_length(v) == 0) return log('Cannot normalize vector of lenght 0', "WARNING")
+    if (get_vector_length(v) == 0) return log('Cannot normalize vector of length 0', "WARNING")
 	v.x,v.y=v.x/get_vector_length(v),v.y/get_vector_length(v)
 end
 
