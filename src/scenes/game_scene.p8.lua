@@ -76,46 +76,54 @@ function GameScene:enter()
     
     local product_stand = ProductStand:new({
         pos = {x = 3, y =1},
-        draw_pos = {x=82, y=98}
+        draw_pos = {x=82, y=98},
+        sfx = 2
     })
     local coffe_machine = CoffeeMachine:new({
         pos = {x=3, y=0},
         draw_pos = {x=82, y=80},
         product_stand = product_stand,
-        spr=4
+        spr=4,
+        sfx = 2
     })
     local workstation = Workstation:new({
         pos = {x=2, y=0},
         draw_pos = {x=60, y=80},
-        coffe_machine = coffe_machine
+        coffe_machine = coffe_machine,
+        sfx = 2
     })
     local cookbook = Cookbook:new({
         pos = {x = 2, y =1},
         draw_pos = {x=60, y=98},
         spr=36,
-        available_monsters = night_data.available_monsters
+        available_monsters = night_data.available_monsters,
+        sfx = 2
     })
 
      local grid_items={
         Ingredient:new({
             pos = {x=0, y=0},
             draw_pos = {x=22, y=80},
-            ingredient = INGREDIENTS_ENUM.COFFEE_BEANS
+            ingredient = INGREDIENTS_ENUM.COFFEE_BEANS,
+            sfx = 2
         }),
         Ingredient:new({
             pos = {x=0, y=1},
             draw_pos = {x=22, y=98},
-            ingredient = INGREDIENTS_ENUM.CHOCOLATE
+            ingredient = INGREDIENTS_ENUM.CHOCOLATE,
+            sfx = 2
         }),
         Ingredient:new({
             pos = {x=1, y=0},
             draw_pos = {x=42, y=80},
-            ingredient = INGREDIENTS_ENUM.MILK
+            ingredient = INGREDIENTS_ENUM.MILK,
+            sfx = 2
         }),
         Ingredient:new({
             pos = {x=1, y=1},
             draw_pos = {x=42, y=98},
-            ingredient = INGREDIENTS_ENUM.BERRY_SYRUP
+            ingredient = INGREDIENTS_ENUM.BERRY_SYRUP,
+            sfx = 2
         }),
         workstation,
         coffe_machine,

@@ -52,8 +52,10 @@ function LightSystem:switch()
     _GLOBALS.light = not _GLOBALS.light   
     if _GLOBALS.light then
         EventSystem:emit("lights_on")
+        sfx(5)
         log("lights on")
     else
+        sfx(4)
         log("lights off")
     end
 end

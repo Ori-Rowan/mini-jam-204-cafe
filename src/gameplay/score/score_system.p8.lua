@@ -24,8 +24,10 @@ end
 
 function ScoreSystem:handle_customer_left(props)
     if props.satisfied then
+        sfx(6)
         self.score += props.value
     else
+        sfx(7)
         self.score -= props.value
         if self.score < 0 then
             self.score = 0

@@ -33,6 +33,7 @@ end
 
 function GridSystem:move_pointer()
     local pos = copy_table(self.items[self.pointer].pos)
+    local l_pos = copy_table(pos)
 
     if btnp(0) then
         pos.x-=1
@@ -47,14 +48,20 @@ function GridSystem:move_pointer()
         pos.y+=1
     end
 
-    for k,v in pairs(self.items) do 
-        if (v.pos.x==pos.x and v.pos.y==pos.y) self.pointer=k 
+    if pos.x != l_pos.x or pos.y != l_pos.y then
+        for k,v in pairs(self.items) do 
+            if v.pos.x==pos.x and v.pos.y==pos.y then
+                self.pointer=k 
+                -- sfx(0)
+            end
+        end
     end
 end
 
 function GridSystem:interact()
     if btnp(5) then
         self.items[self.pointer]:interact()
+        -- sfx(self.items[self.poinzter].sfx)
     end
 end
 

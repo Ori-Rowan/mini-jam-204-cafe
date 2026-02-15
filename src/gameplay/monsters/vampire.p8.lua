@@ -9,7 +9,7 @@ function Vampire:new()
 
     setmetatable(tbl, self)
     
-    tbl.time_treshold = 360
+    tbl.time_treshold = 460
     tbl.timer = tbl.time_treshold
 
     return tbl
@@ -51,5 +51,9 @@ function Vampire:special_behaviour()
     self.timer -= 1
     if self.timer == 0 then
         self:leave(false)
+    end
+
+    if self.timer == self.time_treshold/2 then
+        sfx(11)
     end
 end

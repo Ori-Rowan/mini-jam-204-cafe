@@ -34,7 +34,7 @@ function Mimic:new()
         }
     }
 
-    tbl.col_sawp = col_swap_tbls[self.target.name]
+    tbl.col_sawp = col_swap_tbls[tbl.target.name]
     
     return tbl
 end

@@ -40,6 +40,7 @@ end
 
 function CoffeeMachine:update()
     if self.brewing then
+        sfx(3)
         self.brew_timer-=1
         if self.brew_timer == 0 then
             EventSystem:emit("finished_brewing")

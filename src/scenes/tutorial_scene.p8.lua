@@ -71,29 +71,37 @@ function TutorialScene:enter()
     }
 
     self.msg = 1
+    sfx(8)
+
 
     self.conversation = cocreate(function ()
         self.msg += 1
+        sfx(8)
         yield()
         self.msg += 1
+        sfx(8)
 
         
         self.sleep = true
         EventSystem:add_listener("lights_on", function (props)
             self.sleep = false
             self.msg += 1
+            sfx(8)
         end, true)
 
         for i=1,7 do
             yield()
             self.msg += 1
+            sfx(8)
         end
         self.customer_system:spawn()
 
         yield()
         self.msg += 1
+        sfx(8)
         yield()
         self.msg += 1
+        sfx(8)
         self.sleep = true
         self.bar_grid:switch_sleep(false)
 
@@ -101,16 +109,19 @@ function TutorialScene:enter()
             {"cookbook_open", "cookbook_close", "cookbook_close", "add_ingredient", "start_brewing", "finished_brewing", "get_product", "serve_product"},
             function(step, props)
                 self.msg += 1
+                sfx(8)
             end
         )
 
         EventSystem:add_listener("customer_left", function (props)
             if props.satisfied then
                 self.msg = 23
+                sfx(8)
                 self.sleep = false
                 self.bar_grid:switch_sleep(true)
             else
                 self.msg = 22
+                sfx(8)
                 self.customer_system:spawn()
             end
         end)
@@ -118,6 +129,7 @@ function TutorialScene:enter()
         for i=1,3 do
             yield()
             self.msg += 1
+            sfx(8)
         end
         
         yield()

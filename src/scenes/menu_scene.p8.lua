@@ -43,20 +43,22 @@ function MenuScene:main_update()
     end
     self.pointer = mid(1,self.pointer,2)
     if l_pointer != self.pointer then
-        sfx(3)
+        sfx(0)
     end
 
 
     -- btn press
     if btnp(5) then
-        sfx(4)
+        sfx(0)
         if self.pointer==1 then
             log('Enter TutorialScene')
             _GLOBALS.night = 0
             SceneManager:enter_scene(TutorialScene)
         elseif self.pointer==2 and _GLOBALS.night then
             log('Enter GameScene')
-            _GLOBALS.night = mid(_GLOBALS.nigt,0,5)
+            if _GLOBALS.night > 5 then
+                _GLOBALS.night = 5
+            end
             SceneManager:enter_scene(GameScene)
         end
     end

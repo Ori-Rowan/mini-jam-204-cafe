@@ -54,6 +54,9 @@ function Warewolf:special_behaviour()
     else
         self.timer = self.dark_treshold
     end
+    if self.timer == self.dark_treshold/2 then
+        sfx(10)
+    end
 
     if self.timer == 0 then
         self:leave(false)

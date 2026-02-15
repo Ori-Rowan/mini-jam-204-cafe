@@ -11,6 +11,9 @@ function Ghost:new()
     
     tbl.light_treshold = 200
     tbl.timer = tbl.light_treshold
+    if tbl.do_sfx then
+        
+    end
 
     return tbl
 end
@@ -47,6 +50,7 @@ function Ghost:special_behaviour()
     if _GLOBALS.light then
         self.timer -= 1
     end
+
     if self.timer == 0 then
         self:leave(false)
     end

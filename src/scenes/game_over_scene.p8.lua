@@ -23,11 +23,14 @@ end
 function GameOverScene:draw()
     print_align_center("you let the candle burn out", 0,40,128, 11)    
     print_align_center("❎ restart", 0,50,128, 11)  
-    print_align_center("🅾️ menu", 0,60,128, 11)      
-   
-
+    print_align_center("🅾️ menu", 0,60,128, 11) 
+    
+    
 end
 
+function GameOverScene:enter()
+    sfx(13)     
+end
 
 
 
