@@ -42,7 +42,7 @@ function CoffeeMachine:update()
     if self.brewing then
         self.brew_timer-=1
         if self.brew_timer == 0 then
-            log("brewing finished: "..self.product.name)
+            EventSystem:emit("finished_brewing")
             self.brewing=false
         end
     end
@@ -88,7 +88,7 @@ function CoffeeMachine:check_recipie(recipie)
     for r_ingredient in all(recipie.ingredients) do
         local ingredient_match = false
         for cm_ingredient in all(cm_ingredients) do
-            if cm_ingredient == r_ingredient then
+            if cm_ingredient.name == r_ingredient.name then
                 ingredient_match = true
                 del(cm_ingredients, cm_ingredient)
                 break

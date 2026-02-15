@@ -44,73 +44,76 @@ function GameScene:draw()
 
         clip(0,0,128,128)
 
+        
         line(0,64,128,64,0)
+        spr(102,106, 48,2,2)
+
     else
         line(0,64,128,64,2)
+        spr_dark(102,106, 48,2,2)
     end
 
 
-    self.bar_grid:draw()
     self.customer_system:draw()
+    self.bar_grid:draw()
 
 end
 
 function GameScene:enter()
 
+    local night_data = NIGHTS_ENUM["NIGHT_".._GLOBALS.night]
+
     EventSystem:clear()   
 
-    self.light_system = LightSystem:new({timer = 2000})
+    self.light_system = LightSystem:new({start_time = 2000})
     
     local product_stand = ProductStand:new({
         pos = {x = 3, y =1},
-        draw_pos = {x=82, y=92}
+        draw_pos = {x=82, y=98}
     })
     local coffe_machine = CoffeeMachine:new({
         pos = {x=3, y=0},
-        draw_pos = {x=82, y=74},
+        draw_pos = {x=82, y=80},
         product_stand = product_stand,
         spr=4
     })
     local workstation = Workstation:new({
         pos = {x=2, y=0},
-        draw_pos = {x=60, y=74},
+        draw_pos = {x=60, y=80},
         coffe_machine = coffe_machine
     })
     local cookbook = Cookbook:new({
         pos = {x = 2, y =1},
-        draw_pos = {x=60, y=92},
-        spr=36
+        draw_pos = {x=60, y=98},
+        spr=36,
+        available_monsters = night_data.available_monsters
     })
 
      local grid_items={
         Ingredient:new({
             pos = {x=0, y=0},
-            draw_pos = {x=22, y=74},
-            spr = 0,
+            draw_pos = {x=22, y=80},
             ingredient = INGREDIENTS_ENUM.COFFEE_BEANS
         }),
         Ingredient:new({
             pos = {x=0, y=1},
-            draw_pos = {x=22, y=92},
-            spr = 32,
+            draw_pos = {x=22, y=98},
             ingredient = INGREDIENTS_ENUM.CHOCOLATE
         }),
         Ingredient:new({
             pos = {x=1, y=0},
-            draw_pos = {x=42, y=74},
-            spr = 2,
+            draw_pos = {x=42, y=80},
             ingredient = INGREDIENTS_ENUM.MILK
         }),
         Ingredient:new({
             pos = {x=1, y=1},
-            draw_pos = {x=42, y=92},
-            spr = 34,
+            draw_pos = {x=42, y=98},
             ingredient = INGREDIENTS_ENUM.BERRY_SYRUP
         }),
         workstation,
-        cookbook,
         coffe_machine,
-        product_stand
+        product_stand,
+        cookbook
     }
 
     self.bar_grid = GridSystem:new({
@@ -118,7 +121,8 @@ function GameScene:enter()
     })
 
     self.customer_system = CustomerSystem:new({
-        seat_amount = 4
+        seat_amount = 4,
+        available_monsters = night_data.available_monsters
     })
 
     EventSystem:add_listener("serve_product", function (props)
@@ -130,6 +134,15 @@ function GameScene:enter()
         self.customer_system.grid_system:switch_sleep(true)
         self.bar_grid:switch_sleep(false)        
     end)
+
+    EventSystem:add_listener("cookbook_open", function (props)
+        self.bar_grid:switch_sleep(true)
+    end)
+
+    EventSystem:add_listener("cookbook_close", function (props)
+        self.bar_grid:switch_sleep(false)
+    end)
+
 
 
 end

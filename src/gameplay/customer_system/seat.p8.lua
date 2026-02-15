@@ -25,7 +25,10 @@ end
 function Seat:draw()
     if _GLOBALS.light then
         spr(self.spr, self.draw_pos.x, self.draw_pos.y+8, 2, 1)    
+    elseif self.customer == nil then
+        spr_dark(self.spr, self.draw_pos.x, self.draw_pos.y+8, 2, 1)    
     end
+
     
     if self.customer then
         self.customer:draw()

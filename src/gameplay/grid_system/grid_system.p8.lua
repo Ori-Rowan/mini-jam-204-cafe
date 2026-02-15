@@ -15,13 +15,13 @@ function GridSystem:new(t)
 end
 
 function GridSystem:update()
+    foreach(self.items, function (i)
+        if (type(i.update) == "function") i:update()
+    end)
     if not self.sleep then 
         self:move_pointer()
         self:interact()
     end
-    foreach(self.items, function (i)
-        if (type(i.update) == "function") i:update()
-    end)
 end
 
 function GridSystem:draw()

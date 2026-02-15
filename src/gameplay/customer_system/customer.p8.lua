@@ -25,22 +25,8 @@ function Customer:draw()
     if _GLOBALS.light then
         spr(self.spr,x,y-16,2,4)
     else
-        for i=1,15 do
-            if not has_value(self.vis_colors, i) then
-                palt(i, true)
-            end
-        end
-        pal(0,2)
-        spr(self.spr,x,y-16,2,4)
-        pal(0,0)
-
-        for i=0,15 do
-            palt(i, false)
-        end
+        spr_dark(self.spr,x,y-16,2,4, self.vis_colors)
     end
-
-
-
 
     palt(_CONFIG.default_bg_col,true)
     palt(self.bg_col, false)
@@ -48,11 +34,21 @@ end
 
 function Customer:serve(product)
 
+   self:leave(product.name == self.fav_recipie.name)
+
+    EventSystem:emit("product_served")
+end
+
+function Customer:special_behaviour()
+
+end
+
+function Customer:leave(satisfied)
+    
     local particle_data = copy_table(self.seat.draw_pos)
     particle_data.x += 4
     particle_data.y -= 8
-
-    if product.name == self.fav_recipie.name then
+    if satisfied then
         log("customer satisfied")
         particle_data.type = "heart"
     else
@@ -60,11 +56,8 @@ function Customer:serve(product)
         log("customer dissatisfied")
     end
     ParticleManager:create_particle(SatisfactionParticle,particle_data)
+    
     self.seat:del_customer()
-
-    EventSystem:emit("product_served")
-end
-
-function Customer:special_behaviour()
-
+    
+    EventSystem:emit("customer_left", {satisfied = satisfied })
 end

@@ -8,12 +8,12 @@ function CustomerSystem:new(t)
     
     setmetatable(tbl, self)
 
-    assert(tbl.seat_amount)
+    assert(tbl.seat_amount and tbl.available_monsters)
     
     tbl.seats = {}
     tbl.product = nil
 
-    tbl.spawn_time = tbl.spawn_time or 200
+    tbl.spawn_time = tbl.spawn_time or 150
     tbl.spawn_timer = tbl.spawn_time
 
     tbl:init_grid_system()    
@@ -21,12 +21,6 @@ function CustomerSystem:new(t)
     EventSystem:add_listener("serve_product", function (props)
         tbl:handle_serve_product(props)
     end)
-
-    tbl.available_monsters = {
-        Zombie,
-        Skeleton,
-    }
-
 
 
     return tbl
@@ -59,7 +53,7 @@ function CustomerSystem:init_grid_system()
             y = 0
         },
         draw_pos = {
-            x = 15,
+            x = 5,
             y = 48
         },
         color = 8,
@@ -73,7 +67,7 @@ function CustomerSystem:init_grid_system()
                 y = 0
             },
             draw_pos = {
-                x = 15 + i*20,
+                x = 5 + i*20,
                 y = 48
             },
             color = 3,
@@ -92,7 +86,7 @@ end
 function CustomerSystem:spawn()
     log("spawning monster")
     local rnd_index = 1+flr(rnd(#self.available_monsters))
-    local monster = self.available_monsters[rnd_index]:new()
+    local monster = self.available_monsters[rnd_index].class:new()
 
     for seat in all(self.seats) do
         if seat.customer == nil then

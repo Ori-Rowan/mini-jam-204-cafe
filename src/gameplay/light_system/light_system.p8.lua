@@ -7,7 +7,8 @@ function LightSystem:new(t)
 
     setmetatable(tbl, self)
 
-    assert(tbl.timer)
+    assert(tbl.start_time)
+    tbl.timer = tbl.start_time
 
     tbl.sleep = tbl.sleep or false
 
@@ -34,6 +35,7 @@ end
 function LightSystem:switch()
     _GLOBALS.light = not _GLOBALS.light   
     if _GLOBALS.light then
+        EventSystem:emit("lights_on")
         log("lights on")
     else
         log("lights off")

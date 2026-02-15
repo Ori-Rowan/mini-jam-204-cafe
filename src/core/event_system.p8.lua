@@ -6,17 +6,21 @@ EventSystem = {
 function EventSystem:update()
     foreach(self.listeners, function (l)
         foreach(self.events, function (e)
-            if (l.event == e.event) l.func(e.props)
+            if (l.event == e.event) then 
+                l.func(e.props)
+                if (l.die) del(self.listeners, l)
+            end
         end)
     end)
     self.events = {}
 end
 
-function EventSystem:add_listener(event, func)
+function EventSystem:add_listener(event, func, die)
     assert(type(func) == "function")
     add(self.listeners,{
         event = event,
-        func = func
+        func = func,
+        die = die
     })
 end
 

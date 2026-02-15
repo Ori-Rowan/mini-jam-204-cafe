@@ -52,13 +52,14 @@ function MenuScene:main_update()
         sfx(4)
         if self.pointer==1 then
             log('Enter GameScene')
+            _GLOBALS.night = 1
             SceneManager:enter_scene(GameScene)
         end
     end
 end
 
 function MenuScene:main_draw()
-    self:draw_button(39,60,50,10,'play', self.pointer==1)
+    self:draw_button(39,60,50,10,'new game', self.pointer==1)
 end
 
 function MenuScene:draw_button(x,y,w,h,msg,pointer)
