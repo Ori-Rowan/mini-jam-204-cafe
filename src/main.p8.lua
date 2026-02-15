@@ -6,13 +6,10 @@ function _init()
     palt(0,false)
     palt(_CONFIG.default_bg_col,true)
 
-    _GLOBALS.night = 5
+    cartdata("five-nights-monster-cafe_by_orion")
+    _GLOBALS.night = dget(0)
 
     SceneManager:enter_scene(MenuScene)   
-        -- ParticleManager:create_particle(AngryParticle,{x=60,y=60})   
-
-    -- _GLOBALS.night = 5
-    -- SceneManager:enter_scene(GameScene)
 end
 
 function _update()

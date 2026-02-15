@@ -56,6 +56,7 @@ function MenuScene:main_update()
             SceneManager:enter_scene(TutorialScene)
         elseif self.pointer==2 and _GLOBALS.night then
             log('Enter GameScene')
+            _GLOBALS.night = mid(_GLOBALS.nigt,0,5)
             SceneManager:enter_scene(GameScene)
         end
     end

@@ -35,6 +35,7 @@ end
 
 function NightFinishedScene:enter()
     _GLOBALS.night += 1
+    dset(0, _GLOBALS.night)
 end
 
 
