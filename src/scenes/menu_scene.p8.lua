@@ -65,6 +65,8 @@ function MenuScene:main_update()
 end
 
 function MenuScene:main_draw()
+    spr(145,44,10,6,8)
+
     self:draw_button(39,60,50,10,'new game', self.pointer==1)
     self:draw_button(39,72,50,10,'continue', self.pointer==2)
     print("controls:", 4,98,11)
@@ -78,7 +80,7 @@ function MenuScene:draw_button(x,y,w,h,msg,pointer)
     if pointer then
         msg ="❎ "..msg
     end
-    rectfill(x,y,x+w,y+h,7)
-    rect(x,y,x+w,y+h,5)
+    rectfill(x,y,x+w,y+h,0)
+    rect(x,y,x+w,y+h,11)
     print_align_center(msg, x,y+h/2-2,w,11)
 end
