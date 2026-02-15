@@ -9,7 +9,7 @@ function Vampire:new()
 
     setmetatable(tbl, self)
     
-    tbl.time_treshold = 300
+    tbl.time_treshold = 360
     tbl.timer = tbl.time_treshold
 
     return tbl
@@ -22,8 +22,7 @@ function Vampire:draw()
     local x, y = self.seat.draw_pos.x, self.seat.draw_pos.y
 
     if self.timer <= self.time_treshold/2 then
-        x += rnd(2)-1      
-        y += rnd(2)-1       
+       ParticleManager:create_particle(AngryParticle,{x=x,y=y})   
     end
 
     if _GLOBALS.light then

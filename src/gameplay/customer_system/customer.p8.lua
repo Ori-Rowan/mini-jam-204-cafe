@@ -57,7 +57,8 @@ function Customer:leave(satisfied)
     end
     ParticleManager:create_particle(SatisfactionParticle,particle_data)
     
-    self.seat:del_customer()
     
-    EventSystem:emit("customer_left", {satisfied = satisfied })
+    EventSystem:emit("customer_left", {satisfied = satisfied, value = self.value})
+    
+    self.seat:del_customer()
 end

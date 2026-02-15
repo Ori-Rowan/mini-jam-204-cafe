@@ -35,16 +35,25 @@ end
 
 function Cookbook:draw()
     if self.open then
+        local outline_col = 0
         if _GLOBALS.light then
+            
             rectfill(28,28,100,114,11)
-            rect(28,28,100,114,0)
 
             local openedMonster = self.available_monsters[self.page]
 
             rectfill(74,30,98,68,5)
-            rect(74,30,98,68,0)
 
-            print_align_center(openedMonster.name, 31,32,44, 0)
+            
+            palt(openedMonster.bg_col, true)
+            palt(_CONFIG.default_bg_col, false)
+
+            spr(openedMonster.spr, 79,36,2,4)
+            
+            palt(openedMonster.bg_col, false)
+            palt(_CONFIG.default_bg_col, true)
+
+            print(openedMonster.name, 40,32, 0)
             print_align_center(openedMonster.desc, 31,40,43, 0)
 
             print("favorite recipie:",32,70,0)
@@ -63,19 +72,17 @@ function Cookbook:draw()
                 
             end
 
-            palt(openedMonster.bg_col, true)
-            palt(_CONFIG.default_bg_col, false)
-
-            spr(openedMonster.spr, 79,36,2,4)
-            
-            palt(openedMonster.bg_col, false)
-            palt(_CONFIG.default_bg_col, true)
+          
 
         else 
-            rectfill(15,20,113,108,0)
-            rect(14,20,114,108,2)
+            outline_col = 2
+            rectfill(28,28,100,114,0)
         end
-
+        rect(28,28,100,114,outline_col)
+        rect(74,30,98,68,outline_col)
+        print("❎",30, 30,outline_col)
+        if (self.page != 1) print("⬅️",30,108,outline_col)
+        if (self.page != #self.available_monsters) print("➡️",92,108,outline_col)
 
         
     else

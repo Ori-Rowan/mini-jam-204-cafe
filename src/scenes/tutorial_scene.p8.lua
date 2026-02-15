@@ -39,6 +39,7 @@ function TutorialScene:enter()
 
     self.customer_system.spawn_timer= -1
     self.bar_grid:switch_sleep(true)
+    self.score_system = nil
 
     self.msg_list = {
         "hello hello!",

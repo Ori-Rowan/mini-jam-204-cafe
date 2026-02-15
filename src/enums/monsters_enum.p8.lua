@@ -7,15 +7,17 @@ MONSTERS_ENUM = {
         bg_col=13,
         vis_colors={11,9},
         class = Zombie,
+        value = 10
     },
     SKELETON = {
         name = "skeleton",
-        desc = "BONE MAN LIKE A LITTLE WHITE IN HIS COFFEE",
+        desc = "SHE NEEDS HER CALCIUM",
         fav_recipie = RECIPIES_ENUM.CAPPUCCINO,
         spr=10,
         bg_col=14,
         vis_colors={},
-        class = Skeleton
+        class = Skeleton,
+        value = 15
     },
     GHOST = {
         name = "ghost",
@@ -24,7 +26,8 @@ MONSTERS_ENUM = {
         spr = 12,
         bg_col=8,
         vis_colors={},
-        class = Ghost
+        class = Ghost,
+        value = 20
     },
     WAREWOLF = {
         name = "warewolf",
@@ -33,7 +36,8 @@ MONSTERS_ENUM = {
         spr = 14,
         bg_col=15,
         vis_colors={11},
-        class = Warewolf
+        class = Warewolf,
+        value = 25
     },
     VAMPIRE = {
         name = "vampire",
@@ -42,12 +46,16 @@ MONSTERS_ENUM = {
         spr = 72,
         bg_col=9,
         vis_colors={},
-        class = Vampire
+        class = Vampire,
+        value = 30
     },
-    DOPPLEGANGER = {
-        dsec = "THEY ARE GOOD AT IDENTITY THEFT, BUT NOT PERFECT", 
-        name = "doppleganger",
+    MIMIC = {
+        name = "mimic",
+        desc = "THEY DO IDENTITY THEFT, BUT NOT PERFECTLY", 
+        spr = 74,
+        bg_col = 12,
         fav_recipie = RECIPIES_ENUM.SPECIAL_DRINK,
-
+        class = Mimic,
+        value = 10
     }
 }

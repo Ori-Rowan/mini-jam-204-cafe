@@ -2,13 +2,17 @@
 function _init()
     _GLOBALS = {}
     poke(0x5f2e,1)
-    pal({[0]=0,-16,-15,-14,-12,-11,-10,-13,-9,-4,-1,7,6,-7,-8,-5},1)
+    pal(_CONFIG.default_pal,1)
     palt(0,false)
     palt(_CONFIG.default_bg_col,true)
 
-    _GLOBALS.night = 4
-    SceneManager:enter_scene(GameScene)
-    
+    _GLOBALS.night = 5
+
+    SceneManager:enter_scene(MenuScene)   
+        -- ParticleManager:create_particle(AngryParticle,{x=60,y=60})   
+
+    -- _GLOBALS.night = 5
+    -- SceneManager:enter_scene(GameScene)
 end
 
 function _update()
@@ -20,5 +24,4 @@ end
 function _draw()
     cls()
     SceneManager:draw()
-    ParticleManager:draw()
 end

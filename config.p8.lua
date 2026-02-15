@@ -1,3 +1,4 @@
 _CONFIG = {
-    default_bg_col = 7
+    default_bg_col = 7,
+    default_pal = {[0]=0,-16,-15,-14,-12,-11,-10,-13,-9,-4,-1,7,6,-7,-8,-5}
 }

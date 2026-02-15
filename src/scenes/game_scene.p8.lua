@@ -55,6 +55,13 @@ function GameScene:draw()
 
 
     self.customer_system:draw()
+    self.light_system:draw()    
+    if self.score_system then
+        self.score_system:draw()
+    end
+
+    ParticleManager:draw()
+    
     self.bar_grid:draw()
 
 end
@@ -65,7 +72,7 @@ function GameScene:enter()
 
     EventSystem:clear()   
 
-    self.light_system = LightSystem:new({start_time = 2000})
+    self.light_system = LightSystem:new({start_time = night_data.candle})
     
     local product_stand = ProductStand:new({
         pos = {x = 3, y =1},
@@ -125,6 +132,10 @@ function GameScene:enter()
         available_monsters = night_data.available_monsters
     })
 
+    self.score_system = ScoreSystem:new({
+        goal = night_data.goal
+    })
+
     EventSystem:add_listener("serve_product", function (props)
         self.customer_system.grid_system:switch_sleep(false)
         self.bar_grid:switch_sleep(true)        
@@ -142,7 +153,5 @@ function GameScene:enter()
     EventSystem:add_listener("cookbook_close", function (props)
         self.bar_grid:switch_sleep(false)
     end)
-
-
 
 end
