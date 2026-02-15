@@ -12,11 +12,6 @@ function Mimic:new()
     tbl.fav_recipie = MONSTERS_ENUM.MIMIC.fav_recipie
     tbl.value += MONSTERS_ENUM.MIMIC.value
 
-    return tbl
-end
-
-
-function Mimic:draw()
     local col_swap_tbls = {
         zombie = {
             {a=15,b=10},
@@ -39,15 +34,22 @@ function Mimic:draw()
         }
     }
 
-    local col_sawp = col_swap_tbls[self.target.name]
+    tbl.col_sawp = col_swap_tbls[self.target.name]
+    
+    return tbl
+end
 
-    foreach(col_sawp, function (col_sawp)
+
+function Mimic:draw()
+    
+
+    foreach(tbl.col_sawp, function (col_sawp)
         pal(col_sawp.a, col_sawp.b)
     end)
 
     self.target.class.draw(self)
 
-    foreach(col_sawp, function (col_sawp)
+    foreach(tbl.col_sawp, function (col_sawp)
         pal(col_sawp.a, col_sawp.a, 0)
     end)
 end
@@ -58,10 +60,10 @@ end
 
 function Mimic:get_rnd_target()
     local monster_tbl = {
-        -- MONSTERS_ENUM.ZOMBIE,
-        -- MONSTERS_ENUM.SKELETON,
-        -- MONSTERS_ENUM.GHOST,
-        -- MONSTERS_ENUM.WAREWOLF,
+        MONSTERS_ENUM.ZOMBIE,
+        MONSTERS_ENUM.SKELETON,
+        MONSTERS_ENUM.GHOST,
+        MONSTERS_ENUM.WAREWOLF,
         MONSTERS_ENUM.VAMPIRE,
     }
     return monster_tbl[ceil(rnd(#monster_tbl))]
