@@ -19,7 +19,9 @@ function ScoreSystem:new(t)
 end
 
 function ScoreSystem:draw()
-    print_align_center("money: "..self.score.."/"..self.goal,0,8,128,15)
+    local msg = "money: "..self.score
+    if (self.goal != "infinite") msg+="/"..self.goal
+    print_align_center(msg,0,8,128,15)
 end
 
 function ScoreSystem:handle_customer_left(props)

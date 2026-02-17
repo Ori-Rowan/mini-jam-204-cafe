@@ -55,5 +55,17 @@ NIGHTS_ENUM = {
         },
         goal = 300,
         candle = 4000
+    },
+    NIGHT_HIGHSCORE = {
+        available_monsters = {
+            MONSTERS_ENUM.ZOMBIE,
+            MONSTERS_ENUM.SKELETON,
+            MONSTERS_ENUM.GHOST,
+            MONSTERS_ENUM.WAREWOLF,
+            MONSTERS_ENUM.VAMPIRE,
+            MONSTERS_ENUM.MIMIC
+        },
+        goal = "infinite",
+        candle = 4000
     }
 }
