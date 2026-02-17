@@ -4,7 +4,7 @@ Mimic.__index = Mimic
 
 function Mimic:new()
     local target = Mimic:get_rnd_target()
-    tbl = target.class:new()
+    local tbl = target.class:new()
 
     setmetatable(tbl,self)
     
@@ -41,15 +41,13 @@ end
 
 
 function Mimic:draw()
-    
-
-    foreach(tbl.col_sawp, function (col_sawp)
+    foreach(self.col_sawp, function (col_sawp)
         pal(col_sawp.a, col_sawp.b)
     end)
 
     self.target.class.draw(self)
 
-    foreach(tbl.col_sawp, function (col_sawp)
+    foreach(self.col_sawp, function (col_sawp)
         pal(col_sawp.a, col_sawp.a, 0)
     end)
 end
