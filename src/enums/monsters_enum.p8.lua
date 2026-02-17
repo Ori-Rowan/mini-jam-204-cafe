@@ -21,7 +21,7 @@ MONSTERS_ENUM = {
     },
     GHOST = {
         name = "ghost",
-        desc = "SHE'S SHY AND WILL LEAVE IF YOU LOOK AT HER",
+        desc = "SHE'S SHY AND WILL LEAVE IF THE LIGHT IS ON",
         fav_recipie = RECIPIES_ENUM.LATTE,
         spr = 12,
         bg_col=8,
