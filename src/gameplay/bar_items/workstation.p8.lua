@@ -12,6 +12,13 @@ function Workstation:new(t)
         tbl:handle_add_ingredient(props)
     end)
 
+    self.ingredients_sprites ={
+        { name=INGREDIENTS_ENUM.MILK.name, spr=92 },
+        { name=INGREDIENTS_ENUM.COFFEE_BEANS.name, spr=6 },
+        { name=INGREDIENTS_ENUM.BERRY_SYRUP.name, spr=93 },
+        { name=INGREDIENTS_ENUM.CHOCOLATE.name, spr=108 }
+    }
+
     return tbl
 end
 
@@ -38,9 +45,14 @@ function Workstation:draw()
     local x,y = self.draw_pos.x, self.draw_pos.y
     rectfill(x,y+2,x+16,y+14, 6)
     rect(x,y+2,x+16,y+14, 0)
-    if #self.ingredients>0 then
-        spr(6,x+4,y+4)
 
+    for i_spr in all(self.ingredients_sprites) do 
+        for ingredient in all(self.ingredients) do
+            if ingredient.name == i_spr.name then
+                spr(i_spr.spr,x+4,y+4)
+                break;
+            end
+        end
     end
 end
 
