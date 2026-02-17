@@ -54,9 +54,9 @@ function MenuScene:main_update()
             log('Enter TutorialScene')
             _GLOBALS.night = 0
             SceneManager:enter_scene(TutorialScene)
-        elseif self.pointer==2 and _GLOBALS.night then
+        elseif self.pointer==2 and _GLOBALS.night != 0 then
             log('Enter GameScene')
-            if _GLOBALS.night > 5 then
+            if type(_GLOBALS.night) == "number" and _GLOBALS.night > 5 then
                 _GLOBALS.night = 5
             end
             SceneManager:enter_scene(GameScene)
@@ -74,8 +74,6 @@ function MenuScene:main_draw()
     print("🅾️=z", 4,114,11)
     print("❎=x", 22,114,11)
 
-    -- rectfill(0,0,128,128,0)
-    -- sspr(6,77,50,50,22,20,100,100)
 end
 
 function MenuScene:draw_button(x,y,w,h,msg,pointer)
