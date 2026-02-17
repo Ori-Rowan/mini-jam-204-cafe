@@ -21,10 +21,18 @@ function GameOverScene:update()
 end
 
 function GameOverScene:draw()
-    print_align_center("you let the candle burn out", 0,40,128, 11)    
-    print_align_center("❎ restart", 0,50,128, 11)  
-    print_align_center("🅾️ menu", 0,60,128, 11) 
-    
+    if _GLOBALS.night == "HIGHSCORE" then
+        print_align_center("you let the candle burn out", 0,40,128, 11)    
+        print_align_center("you managed to earn ".._GLOBALS.score.." money", 0,50,128, 11)
+        print_align_center("❎ restart", 0,60,128, 11)  
+        print_align_center("🅾️ menu", 0,70,128, 11) 
+
+    else
+        print_align_center("you let the candle burn out", 0,40,128, 11)    
+        print_align_center("❎ restart", 0,50,128, 11)  
+        print_align_center("🅾️ menu", 0,60,128, 11) 
+        
+    end
     
 end
 

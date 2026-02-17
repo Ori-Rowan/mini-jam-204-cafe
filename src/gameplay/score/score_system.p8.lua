@@ -10,6 +10,7 @@ function ScoreSystem:new(t)
     assert(tbl.goal)
 
     tbl.score = 0
+    _GLOBALS.score = tbl.score
 
     EventSystem:add_listener("customer_left", function (props)
         tbl:handle_customer_left(props)
@@ -36,7 +37,9 @@ function ScoreSystem:handle_customer_left(props)
         end
     end
     
-    if self.score >= self.goal then
+    if self.goal != "infinite" and self.score >= self.goal then
         SceneManager:enter_scene(NightFinishedScene)
+    elseif self.goal == "infinite" then
+        _GLOBALS.score = self.score
     end
 end
