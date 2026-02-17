@@ -74,6 +74,8 @@ function MenuScene:main_draw()
     print("🅾️=z", 4,114,11)
     print("❎=x", 22,114,11)
 
+    -- rectfill(0,0,128,128,0)
+    -- sspr(6,77,50,50,22,20,100,100)
 end
 
 function MenuScene:draw_button(x,y,w,h,msg,pointer)
