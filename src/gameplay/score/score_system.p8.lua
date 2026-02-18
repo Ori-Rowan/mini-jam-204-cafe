@@ -21,7 +21,7 @@ end
 
 function ScoreSystem:draw()
     local msg = "money: "..self.score
-    if (self.goal != "infinite") msg+="/"..self.goal
+    if (self.goal != "infinite") msg=msg.."/"..self.goal
     print_align_center(msg,0,8,128,15)
 end
 
