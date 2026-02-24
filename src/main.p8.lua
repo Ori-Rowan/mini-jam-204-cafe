@@ -14,7 +14,7 @@ end
 
 function _update()
     SceneManager:update()
-    EventSystem:update()
+    EventManager:update()
     ParticleManager:update()
 end
 

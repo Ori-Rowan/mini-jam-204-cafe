@@ -29,7 +29,7 @@ function Cookbook:update()
 
     if btnp(5) then
         self.open = false
-        EventSystem:emit("cookbook_close")
+        EventManager:emit("cookbook_close")
     end
 end
 
@@ -92,5 +92,5 @@ end
 
 function Cookbook:interact()
     self.open = true
-    EventSystem:emit("cookbook_open")
+    EventManager:emit("cookbook_open")
 end

@@ -39,5 +39,5 @@ end
 
 function Trashbin:interact()
     log("thowing out product")
-    EventSystem:emit("product_served")
+    EventManager:emit("product_served")
 end

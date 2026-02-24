@@ -18,7 +18,7 @@ function CustomerSystem:new(t)
 
     tbl:init_grid_system()    
 
-    EventSystem:add_listener("serve_product", function (props)
+    EventManager:add_listener("serve_product", function (props)
         tbl:handle_serve_product(props)
     end)
 

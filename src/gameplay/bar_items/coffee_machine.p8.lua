@@ -17,7 +17,7 @@ function CoffeeMachine:new(t)
     assert(tbl.product_stand)
 
 
-    EventSystem:add_listener("start_brewing", function (props)
+    EventManager:add_listener("start_brewing", function (props)
         tbl:handle_start_brewing(props)        
     end)
     return tbl
@@ -34,7 +34,7 @@ function CoffeeMachine:interact()
         log("product stand is full")
         return
     end
-    EventSystem:emit("get_product", {product = self.product})
+    EventManager:emit("get_product", {product = self.product})
     self.product = nil
 end
 
@@ -43,7 +43,7 @@ function CoffeeMachine:update()
         sfx(3)
         self.brew_timer-=1
         if self.brew_timer == 0 then
-            EventSystem:emit("finished_brewing")
+            EventManager:emit("finished_brewing")
             self.brewing=false
         end
     end

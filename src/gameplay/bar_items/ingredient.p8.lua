@@ -16,5 +16,5 @@ end
 
 function Ingredient:interact()
     log("Ingredient: "..self.ingredient.name)
-    EventSystem:emit("add_ingredient", {ingredient=self.ingredient})
+    EventManager:emit("add_ingredient", {ingredient=self.ingredient})
 end

@@ -9,7 +9,7 @@ function ProductStand:new(t)
     tbl.ingredients = {}
     self.product = nil
 
-    EventSystem:add_listener("get_product", function (props)
+    EventManager:add_listener("get_product", function (props)
         tbl:handle_get_product(props)        
     end)
 
@@ -31,7 +31,7 @@ function ProductStand:draw()
 end
 
 function ProductStand:serve()
-    EventSystem:emit("serve_product", {product = self.product})
+    EventManager:emit("serve_product", {product = self.product})
     self.product = nil 
 end
 

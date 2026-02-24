@@ -4,7 +4,6 @@ __lua__
 #include config.p8.lua
 #include src\oris_toolbox_mini.p8.lua
 #include src\main.p8.lua
-#include src\core\event_system.p8.lua
 #include src\utils\utils.p8.lua
 #include src\gameplay\grid_system\grid_system.p8.lua
 #include src\gameplay\grid_system\grid_item.p8.lua

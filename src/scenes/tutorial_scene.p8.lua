@@ -83,7 +83,7 @@ function TutorialScene:enter()
 
         
         self.sleep = true
-        EventSystem:add_listener("lights_on", function (props)
+        EventManager:add_listener("lights_on", function (props)
             self.sleep = false
             self.msg += 1
             sfx(8)
@@ -113,7 +113,7 @@ function TutorialScene:enter()
             end
         )
 
-        EventSystem:add_listener("customer_left", function (props)
+        EventManager:add_listener("customer_left", function (props)
             if props.satisfied then
                 self.msg = 23
                 sfx(8)
@@ -142,7 +142,7 @@ function TutorialScene:add_sequential_listeners(events, on_step)
     local function register_step(i)
         if (i > #events) return
 
-        EventSystem:add_listener(events[i],
+        EventManager:add_listener(events[i],
             function(props)
                 if on_step then
                     on_step(i, props)

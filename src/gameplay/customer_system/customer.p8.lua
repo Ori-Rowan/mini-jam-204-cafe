@@ -36,7 +36,7 @@ function Customer:serve(product)
 
    self:leave(product.name == self.fav_recipie.name)
 
-    EventSystem:emit("product_served")
+    EventManager:emit("product_served")
 end
 
 function Customer:special_behaviour()
@@ -58,7 +58,7 @@ function Customer:leave(satisfied)
     ParticleManager:create_particle(SatisfactionParticle,particle_data)
     
     
-    EventSystem:emit("customer_left", {satisfied = satisfied, value = self.value})
+    EventManager:emit("customer_left", {satisfied = satisfied, value = self.value})
     
     self.seat:del_customer()
 end

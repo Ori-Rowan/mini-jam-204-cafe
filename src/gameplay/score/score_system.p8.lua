@@ -12,7 +12,7 @@ function ScoreSystem:new(t)
     tbl.score = 0
     _GLOBALS.score = tbl.score
 
-    EventSystem:add_listener("customer_left", function (props)
+    EventManager:add_listener("customer_left", function (props)
         tbl:handle_customer_left(props)
     end)
 

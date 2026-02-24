@@ -8,7 +8,7 @@ function Workstation:new(t)
 
     assert(tbl.coffe_machine)
     tbl.ingredients = {}
-    EventSystem:add_listener("add_ingredient", function (props)
+    EventManager:add_listener("add_ingredient", function (props)
         tbl:handle_add_ingredient(props)
     end)
 
@@ -33,7 +33,7 @@ function Workstation:interact()
         log("cofee machine full")
         return
     end
-    EventSystem:emit("start_brewing", {ingredients = self.ingredients})
+    EventManager:emit("start_brewing", {ingredients = self.ingredients})
     self.ingredients = {}
 end
 

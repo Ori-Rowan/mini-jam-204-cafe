@@ -70,7 +70,7 @@ function GameScene:enter()
 
     local night_data = NIGHTS_ENUM["NIGHT_".._GLOBALS.night]
 
-    EventSystem:clear()   
+    EventManager:clear()   
 
     self.light_system = LightSystem:new({start_time = night_data.candle})
     
@@ -144,21 +144,21 @@ function GameScene:enter()
         goal = night_data.goal
     })
 
-    EventSystem:add_listener("serve_product", function (props)
+    EventManager:add_listener("serve_product", function (props)
         self.customer_system.grid_system:switch_sleep(false)
         self.bar_grid:switch_sleep(true)        
     end)
 
-    EventSystem:add_listener("product_served", function (props)
+    EventManager:add_listener("product_served", function (props)
         self.customer_system.grid_system:switch_sleep(true)
         self.bar_grid:switch_sleep(false)        
     end)
 
-    EventSystem:add_listener("cookbook_open", function (props)
+    EventManager:add_listener("cookbook_open", function (props)
         self.bar_grid:switch_sleep(true)
     end)
 
-    EventSystem:add_listener("cookbook_close", function (props)
+    EventManager:add_listener("cookbook_close", function (props)
         self.bar_grid:switch_sleep(false)
     end)
 

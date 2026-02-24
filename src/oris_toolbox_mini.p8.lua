@@ -16,7 +16,7 @@ end
 _CONFIG.oris_toolbox:init()
 -- END OF config.p8.lua
 
--- START OF general\logging_lib.lua
+-- START OF general\logging_lib.p8.lua
 -- priority: -2
 
 printh("["..time().."][INFO]: logging start", _CONFIG.oris_toolbox.log_dir,  _CONFIG.oris_toolbox.log_clear_on_start)
@@ -31,9 +31,9 @@ function log(msg, level)
 end
 
 
--- END OF general\logging_lib.lua
+-- END OF general\logging_lib.p8.lua
 
--- START OF general\entity_behaviour.lua
+-- START OF general\entity_behaviour.p8.lua
 -- priority: -1
 
 ---Applies movement logic to an entity table with spd (number of units to move) and dir (point on circle [0,1) where 0 is right).
@@ -45,9 +45,9 @@ function entity_movement(e)
 end
 
 
--- END OF general\entity_behaviour.lua
+-- END OF general\entity_behaviour.p8.lua
 
--- START OF general\input_lib.lua
+-- START OF general\input_lib.p8.lua
 -- priority: -1
 
 ---Returns direction, point on a circle [0,1) where 0 is right, based on the player input ⬅️⬆️➡️⬇️ for normalized 8d input.
@@ -62,9 +62,9 @@ function get_8d_input()
 end
 
 
--- END OF general\input_lib.lua
+-- END OF general\input_lib.p8.lua
 
--- START OF general\math_lib.lua
+-- START OF general\math_lib.p8.lua
 -- priority: -1
 
 ---Returns the number of digits infront of decimal point of a given number.
@@ -83,9 +83,9 @@ function get_digits(num)
 end
 
 
--- END OF general\math_lib.lua
+-- END OF general\math_lib.p8.lua
 
--- START OF general\sfx_lib.lua
+-- START OF general\sfx_lib.p8.lua
 -- priority: -1
 
 ---Changes the volume of a given sfx through direct memmory access.
@@ -101,9 +101,9 @@ function change_sfx_volume(sfx,volume)
 end
 
 
--- END OF general\sfx_lib.lua
+-- END OF general\sfx_lib.p8.lua
 
--- START OF general\table_lib.lua
+-- START OF general\table_lib.p8.lua
 -- priority: -1
 
 ---Creates non reactive copy of a table.
@@ -132,9 +132,9 @@ function has_value (t, val)
 end
 
 
--- END OF general\table_lib.lua
+-- END OF general\table_lib.p8.lua
 
--- START OF general\text_lib.lua
+-- START OF general\text_lib.p8.lua
 -- priority: -1
 
 ---Prints text centered inside a given width.
@@ -185,9 +185,9 @@ function str_width(str)
 end
 
 
--- END OF general\text_lib.lua
+-- END OF general\text_lib.p8.lua
 
--- START OF general\time_lib.lua
+-- START OF general\time_lib.p8.lua
 -- priority: -1
 
 ---Returns number of frames for given seconds assuming 30 FPS.
@@ -205,9 +205,9 @@ function frame_to_seconds(frames)
 end
 
 
--- END OF general\time_lib.lua
+-- END OF general\time_lib.p8.lua
 
--- START OF general\vector_lib.lua
+-- START OF general\vector_lib.p8.lua
 -- priority: -1
 
 ---Returns vector table between coordinate tables.
@@ -229,7 +229,7 @@ end
 ---@param v table {number x, number y}
 ---@return table {number x, number y}
 function normalize_vector(v)
-    if (get_vector_length(v) == 0) return log('Cannot normalize vector of length 0', "WARNING")
+    if (get_vector_length(v) == 0) return log('Cannot normalize vector of lenght 0', "WARNING")
 	v.x,v.y=v.x/get_vector_length(v),v.y/get_vector_length(v)
 end
 
@@ -248,9 +248,9 @@ function get_angle_from_vector(v)
 end
 
 
--- END OF general\vector_lib.lua
+-- END OF general\vector_lib.p8.lua
 
--- START OF particle_manager\particle.lua
+-- START OF particle_manager\particle.p8.lua
 
 -- priority: 1
 
@@ -281,9 +281,9 @@ function Particle:die()
         del(ParticleManager.particles, self)    
     end
 end
--- END OF particle_manager\particle.lua
+-- END OF particle_manager\particle.p8.lua
 
--- START OF scene_manager\scene.lua
+-- START OF scene_manager\scene.p8.lua
 -- priority : 1
 
 Scene = {}
@@ -309,9 +309,9 @@ end
 function Scene:enter()
     log("Scene has no enter method", "WARNING")
 end
--- END OF scene_manager\scene.lua
+-- END OF scene_manager\scene.p8.lua
 
--- START OF camera\camera.lua
+-- START OF camera\camera.p8.lua
 -- priority: 1
 
 Camera = {
@@ -338,9 +338,47 @@ end
 function Camera:get_offset()
     return rnd(self.shake_offset*2) - self.shake_offset
 end
--- END OF camera\camera.lua
+-- END OF camera\camera.p8.lua
 
--- START OF particle_manager\particle_manager.lua
+-- START OF event_manager\event_manager.p8.lua
+-- priority: 1
+
+EventManager = {
+    events = {},
+    listeners = {}
+}
+
+function EventManager:update()
+    foreach(self.listeners, function (l)
+        foreach(self.events, function (e)
+            if (l.event == e.event) then 
+                l.func(e.props)
+                if (l.die) del(self.listeners, l)
+            end
+        end)
+    end)
+    self.events = {}
+end
+
+function EventManager:add_listener(event, func, die)
+    assert(type(func) == "function")
+    add(self.listeners,{
+        event = event,
+        func = func,
+        die = die
+    })
+end
+
+function EventManager:emit(event, props, reactive)
+    add(self.events, {event=event, props=reactive and props or copy_table(props)})
+end
+
+function EventManager.clear(_ENV)
+    events, listeners  = {}, {}
+end
+-- END OF event_manager\event_manager.p8.lua
+
+-- START OF particle_manager\particle_manager.p8.lua
 -- priority: 1
 
 ParticleManager = {
@@ -370,7 +408,7 @@ function ParticleManager:update(layer)
     if layer then
         particles = self.layers[layer]
     end
-    -- log("updating layer: "..tostr(layer))
+    log("updating layer: "..tostr(layer))
 
     foreach(particles, function (p)
         p:update()
@@ -387,9 +425,9 @@ function ParticleManager:draw(layer)
         p:draw()
     end)
 end
--- END OF particle_manager\particle_manager.lua
+-- END OF particle_manager\particle_manager.p8.lua
 
--- START OF scene_manager\scene_manager.lua
+-- START OF scene_manager\scene_manager.p8.lua
 -- priority: 1
 
 SceneManager = {
@@ -413,5 +451,5 @@ function SceneManager:enter_scene(scene, tbl)
     self.current_scene = scene:new(tbl)
     self.current_scene:enter()
 end
--- END OF scene_manager\scene_manager.lua
+-- END OF scene_manager\scene_manager.p8.lua
 
